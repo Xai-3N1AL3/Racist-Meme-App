@@ -50,7 +50,7 @@ void main() {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Text(
-                'Karrie ah',
+                'Karrie',
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
