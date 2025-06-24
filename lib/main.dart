@@ -6,7 +6,7 @@ void main() {
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
         title: Text(
-          'Expense Tracker',
+          'Expense Trackers',
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontStyle: FontStyle.italic,
