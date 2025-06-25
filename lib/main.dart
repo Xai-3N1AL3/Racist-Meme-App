@@ -1,158 +1,161 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MaterialApp(
-    home: Scaffold(
-      backgroundColor: Colors.grey[100],
+  runApp(MaterialApp(home: Profile()));
+}
+
+class Profile extends StatelessWidget {
+  const Profile({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Expense Trackerist',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontStyle: FontStyle.italic,
-          ),
+        title: const Text(
+          'Profile',
+          style: TextStyle(color: Colors.white),
         ),
-        backgroundColor: Colors.blue[400],
+        backgroundColor: Colors.black,
       ),
-      body: Column(
-        children: [
-          Container(
-            margin: EdgeInsets.all(15),
-            padding: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: Colors.blue[50],
-              borderRadius: BorderRadius.circular(16),
-              border: Border.all(color: Colors.blue[300]!),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: Container(
+        margin: const EdgeInsets.fromLTRB(0, 30, 0, 0),
+        child: Column(
+          children: [
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  padding: EdgeInsets.all(6),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.blue[200]!),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Text(
-                    '🧑‍🤝‍🧑 May Bespren:',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                      color: Colors.black87,
-                    ),
+                Text(
+                  'User Profile',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
                   ),
                 ),
-                Container(
-                  padding: EdgeInsets.symmetric(vertical: 6, horizontal: 14),
-                  decoration: BoxDecoration(
-                    color: Colors.lightBlue[100],
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Text(
-                    'Margie',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Times New Roman',
-                    ),
-                  ),
-                )
               ],
             ),
-          ),
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-            padding: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: Colors.yellow[100],
-              borderRadius: BorderRadius.circular(16),
-              border: Border.all(color: Colors.amber[300]!),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.person, size: 80),
+              ],
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            Column(
               children: [
                 Container(
-                  padding: EdgeInsets.all(6),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.amber[200]!),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Text(
-                    '📂 Category of Bestie:',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                      color: Colors.black87,
-                    ),
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.symmetric(vertical: 6, horizontal: 14),
-                  decoration: BoxDecoration(
-                    color: Colors.amber[50],
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Text(
-                    'Dark',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Courier New',
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.fromLTRB(15, 10, 15, 20),
-            padding: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: Colors.green[100],
-              borderRadius: BorderRadius.circular(16),
-              border: Border.all(color: Colors.green[300]!),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  padding: EdgeInsets.all(6),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.green[200]!),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Text(
-                    '💬 Bestie:',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                      color: Colors.black87,
-                    ),
+                  margin: const EdgeInsets.fromLTRB(30, 20, 0, 0),
+                  child: const Row(
+                    children: [
+                      Text(
+                        'Name:',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          fontFamily: 'Times New Roman',
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                Container(
-                  padding: EdgeInsets.symmetric(vertical: 6, horizontal: 14),
-                  decoration: BoxDecoration(
-                    color: Colors.green[50],
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Text(
-                    'Karrie',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      fontStyle: FontStyle.italic,
+                const Row(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
+                      child: Text('Xyronn Cahayon'),
                     ),
+                  ],
+                ),
+                Container(
+                  margin: const EdgeInsets.fromLTRB(30, 10, 0, 0),
+                  child: const Row(
+                    children: [
+                      Text(
+                        'Email:',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          fontFamily: 'Times New Roman',
+                        ),
+                      ),
+                    ],
                   ),
-                )
+                ),
+                const Row(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
+                      child: Text('xyronncahayon28@gmail.com'),
+                    ),
+                  ],
+                ),
+                Container(
+                  margin: const EdgeInsets.fromLTRB(30, 10, 0, 0),
+                  child: const Row(
+                    children: [
+                      Text(
+                        'Company:',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          fontFamily: 'Times New Roman',
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const Row(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
+                      child: Text('None'),
+                    ),
+                  ],
+                ),
+                const Row(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(30, 10, 0, 0),
+                      child: Text(
+                        'Contact Number:',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          fontFamily: 'Times New Roman',
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const Row(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
+                      child: Text('None'),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.fromLTRB(0, 250, 0, 0),
+                      width: 300,
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.black,
+                        ),
+                        child: const Text(
+                          'Logout',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
-          )
-        ],
+          ],
+        ),
       ),
-    ),
-  ));
+    );
+  }
 }
