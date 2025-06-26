@@ -1,158 +1,130 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MaterialApp(
-    home: Scaffold(
-      backgroundColor: Colors.grey[100],
-      appBar: AppBar(
-        title: Text(
-          'Expense Tracker',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontStyle: FontStyle.italic,
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: MemeFeedPage(),
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
+
+class MemeFeedPage extends StatefulWidget {
+  const MemeFeedPage({super.key});
+
+  @override
+  State<MemeFeedPage> createState() => _MemeFeedPageState();
+}
+
+class _MemeFeedPageState extends State<MemeFeedPage> {
+  int _selectedIndex = 0;
+
+  final List<Widget> memePosts = const [
+    MemePost(
+      username: "TigerTheThrid",
+      description:
+      "Little drawing I did for my friends (they gave me an image and I had to make a comic) :)",
+      icon: Icons.pets,
+    ),
+    MemePost(
+      username: "khanTahsinAbrar",
+      description:
+      "Here I am, most powerful human in the world, filled with love",
+      icon: Icons.sunny,
+    ),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: NestedScrollView(
+        headerSliverBuilder: (_, __) => [
+          SliverAppBar(
+            floating: true,
+            snap: true,
+            backgroundColor: Colors.white,
+            title: Row(
+              children: const [
+                Icon(Icons.emoji_emotions, color: Colors.purple),
+                SizedBox(width: 8),
+                Text(
+                  "Meme Feed",
+                  style: TextStyle(color: Colors.black),
+                ),
+              ],
+            ),
+            actions: const [
+              Icon(Icons.refresh, color: Colors.black),
+              SizedBox(width: 12),
+            ],
           ),
+        ],
+        body: ListView.builder(
+          padding: const EdgeInsets.only(bottom: 80),
+          itemCount: memePosts.length,
+          itemBuilder: (context, index) => memePosts[index],
         ),
-        backgroundColor: Colors.blue[400],
       ),
-      body: Column(
-        children: [
-          Container(
-            margin: EdgeInsets.all(15),
-            padding: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: Colors.blue[50],
-              borderRadius: BorderRadius.circular(16),
-              border: Border.all(color: Colors.blue[300]!),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  padding: EdgeInsets.all(6),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.blue[200]!),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Text(
-                    '🧑‍🤝‍🧑 May Bespren:',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                      color: Colors.black87,
-                    ),
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.symmetric(vertical: 6, horizontal: 14),
-                  decoration: BoxDecoration(
-                    color: Colors.lightBlue[100],
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Text(
-                    'Margie',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Times New Roman',
-                    ),
-                  ),
-                )
-              ],
-            ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: (index) => setState(() => _selectedIndex = index),
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: "My Feed",
           ),
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-            padding: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: Colors.yellow[100],
-              borderRadius: BorderRadius.circular(16),
-              border: Border.all(color: Colors.amber[300]!),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  padding: EdgeInsets.all(6),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.amber[200]!),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Text(
-                    '📂 Category of Bestie:',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                      color: Colors.black87,
-                    ),
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.symmetric(vertical: 6, horizontal: 14),
-                  decoration: BoxDecoration(
-                    color: Colors.amber[50],
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Text(
-                    'Dark',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Courier New',
-                    ),
-                  ),
-                )
-              ],
-            ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.message),
+            label: "Messages",
           ),
-          Container(
-            margin: EdgeInsets.fromLTRB(15, 10, 15, 20),
-            padding: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: Colors.green[100],
-              borderRadius: BorderRadius.circular(16),
-              border: Border.all(color: Colors.green[300]!),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  padding: EdgeInsets.all(6),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.green[200]!),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Text(
-                    '💬 Bestie:',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                      color: Colors.black87,
-                    ),
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.symmetric(vertical: 6, horizontal: 14),
-                  decoration: BoxDecoration(
-                    color: Colors.green[50],
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Text(
-                    'Karrie',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      fontStyle: FontStyle.italic,
-                    ),
-                  ),
-                )
-              ],
-            ),
-          )
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: "Profile",
+          ),
         ],
       ),
-    ),
-  ));
+    );
+  }
+}
+
+class MemePost extends StatelessWidget {
+  final String username;
+  final String description;
+  final IconData icon;
+
+  const MemePost({
+    super.key,
+    required this.username,
+    required this.description,
+    required this.icon,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: const EdgeInsets.all(12),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ListTile(
+            leading: CircleAvatar(child: Text(username[0])),
+            title: Text(username),
+            subtitle: Text(description),
+            trailing: const Icon(Icons.sentiment_neutral),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Icon(icon, size: 100, color: Colors.grey[700]),
+          ),
+        ],
+      ),
+    );
+  }
 }
