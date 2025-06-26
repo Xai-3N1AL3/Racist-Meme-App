@@ -78,7 +78,7 @@ class _MemeFeedPageState extends State<MemeFeedPage> {
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: "Feed",
+            label: "My Feed",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.message),
