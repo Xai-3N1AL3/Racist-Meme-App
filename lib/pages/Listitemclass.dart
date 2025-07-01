@@ -95,6 +95,13 @@ class _ListitemclassState extends State<Listitemclass> {
           );
         }).toList(),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushNamed(context, '/add');
+        },
+        backgroundColor: Colors.teal,
+        child: Icon(Icons.add),
+      ),
     );
   }
 }
