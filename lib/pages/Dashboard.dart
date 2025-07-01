@@ -165,6 +165,9 @@ class Dashboard extends StatelessWidget {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(onPressed: (){
+        Navigator.pushNamed(context, '/add');
+      }),
     );
   }
 }
