@@ -21,6 +21,7 @@ void main() {
       '/location': (context) => ChooseLocation(),
 
     },
+    debugShowCheckedModeBanner: false,
   ));
 }
 

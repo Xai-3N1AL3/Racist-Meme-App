@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import '../services/world_time.dart';
 
 class Loading extends StatefulWidget {
   const Loading({super.key});
@@ -10,51 +10,38 @@ class Loading extends StatefulWidget {
 }
 
 class _LoadingState extends State<Loading> {
-  String displayText = 'Loading...';
+  void setupWorldTime() async {
+    WorldTime instance = WorldTime(
+      location: 'Berlin',
+      flag: 'germany.png',
+      url: 'Europe/Berlin',
+    );
+    await instance.getTime();
 
-  void getData() async {
-    try {
-      final response = await http.get(
-        Uri.parse('https://timeapi.io/api/Time/current/zone?timeZone=Asia/Tokyo'),
-      );
+    if (!mounted) return;
 
-      if (response.statusCode == 200) {
-        Map data = jsonDecode(response.body);
-        print(data);
-
-        setState(() {
-          displayText = 'Time in Tokyo: ${data['dateTime']}';
-        });
-      } else {
-        print('Failed to load data: ${response.statusCode}');
-        setState(() {
-          displayText = 'Failed to load data';
-        });
-      }
-    } catch (e) {
-      print('Error occurred: $e');
-      setState(() {
-        displayText = 'Something went wrong!';
-      });
-    }
+    Navigator.pushReplacementNamed(context, '/home', arguments: {
+      'location': instance.location,
+      'flag': instance.flag,
+      'time': instance.time,
+      'isDaytime': instance.isDaytime,
+    });
   }
 
   @override
   void initState() {
     super.initState();
-    getData();
+    setupWorldTime();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: Text(
-            displayText,
-            style: const TextStyle(fontSize: 18),
-            textAlign: TextAlign.center,
-          ),
+      backgroundColor: Colors.blue[900],
+      body: const Center(
+        child: SpinKitFadingCube(
+          color: Colors.white,
+          size: 50.0,
         ),
       ),
     );
